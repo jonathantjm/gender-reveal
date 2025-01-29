@@ -7,12 +7,12 @@
     revealed: boolean;
     content: Content;
   };
-  const gridSize = 9;
+  const GRID_SIZE = 9;
+  const ACTUAL_GENDER: Gender = "Boy";
+  const OTHER_GENDER: Gender = ACTUAL_GENDER === "Boy" ? "Girl" : "Boy";
 
-  let actualGender: Gender = "Boy";
-  const otherGender: Gender = actualGender === "Boy" ? "Girl" : "Boy";
   let cards: Card[] = $state(
-    Array(gridSize).fill({
+    Array(GRID_SIZE).fill({
       revealed: false,
       content: null,
     })
@@ -20,14 +20,14 @@
   let revealedCount: number = $derived(
     cards.filter((card) => card.revealed).length
   );
-  let allRevealed: boolean = $derived(revealedCount === gridSize);
+  let allRevealed: boolean = $derived(revealedCount === GRID_SIZE);
 
   const cardContents: Content[] = [
-    ...Array(Math.floor(gridSize / 2)).fill(actualGender),
-    ...Array(Math.floor(gridSize / 2)).fill(otherGender),
+    ...Array(Math.floor(GRID_SIZE / 2)).fill(ACTUAL_GENDER),
+    ...Array(Math.floor(GRID_SIZE / 2)).fill(OTHER_GENDER),
   ];
 
-  function getGuess() {
+  function getNextGuess() {
     const randomIndex = Math.floor(Math.random() * cardContents.length);
     const guess = cardContents[randomIndex];
     cardContents.splice(randomIndex, 1);
@@ -40,9 +40,9 @@
 
       // If this is the last card, ensure it shows the actual gender
       if (revealedCount === 9) {
-        cards[index].content = actualGender;
+        cards[index].content = ACTUAL_GENDER;
       } else {
-        cards[index].content = getGuess();
+        cards[index].content = getNextGuess();
       }
     }
   }
@@ -68,7 +68,7 @@
     {/each}
   </div>
   {#if allRevealed}
-    <p transition:fade>Congratulations! It's a {actualGender}!</p>
+    <p transition:fade>Congratulations! It's a {ACTUAL_GENDER}!</p>
   {/if}
 </div>
 
