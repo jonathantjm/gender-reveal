@@ -39,7 +39,7 @@
       cards[index].revealed = true;
 
       // If this is the last card, ensure it shows the actual gender
-      if (revealedCount === 9) {
+      if (revealedCount === GRID_SIZE) {
         cards[index].content = ACTUAL_GENDER;
       } else {
         cards[index].content = getNextGuess();
