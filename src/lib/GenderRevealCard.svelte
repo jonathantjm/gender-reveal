@@ -38,12 +38,14 @@
   }
 </script>
 
-<div class="text-center">
-  <h2>Gender Reveal Scratch Card</h2>
-  <div class="grid grid-cols-3 gap-2 mt-5">
+<div class="flex flex-col items-center justify-center p-5">
+  <h2 class="text-xl md:text-2xl lg:text-4xl font-bold text-white mb-5">
+    Gender Reveal Scratch Card
+  </h2>
+  <div class="grid grid-cols-3 gap-4 mt-5">
     {#each cards as card, index}
       <button
-        class="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 lg:w-48 lg:h-60 cursor-pointer disabled:cursor-default"
+        class="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 lg:w-48 lg:h-60 cursor-pointer disabled:cursor-default bg-white shadow-lg rounded-lg flex items-center justify-center text-xl font-semibold text-gray-700"
         onclick={() => revealCard(index)}
         disabled={!!card}
       >
@@ -58,7 +60,9 @@
     {/each}
   </div>
   {#if allRevealed}
-    <p transition:fade>Congratulations! It's a {ACTUAL_GENDER}!</p>
+    <p class="text-2xl font-bold text-white mt-5" transition:fade>
+      Congratulations! It's a {ACTUAL_GENDER}!
+    </p>
   {/if}
 </div>
 
