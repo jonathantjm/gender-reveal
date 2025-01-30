@@ -38,11 +38,15 @@
   }
 </script>
 
-<div class="gender-reveal-card">
+<div class="text-center">
   <h2>Gender Reveal Scratch Card</h2>
-  <div class="card-grid">
+  <div class="grid grid-cols-3 gap-2 mt-5">
     {#each cards as card, index}
-      <button class="card" onclick={() => revealCard(index)} disabled={!!card}>
+      <button
+        class="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 lg:w-48 lg:h-60 cursor-pointer disabled:cursor-default"
+        onclick={() => revealCard(index)}
+        disabled={!!card}
+      >
         {#if !!card}
           <span transition:fade>
             {card}
@@ -59,26 +63,4 @@
 </div>
 
 <style>
-  .gender-reveal-card {
-    text-align: center;
-  }
-
-  .card-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    margin-top: 20px;
-  }
-
-  .card {
-    aspect-ratio: 1;
-    font-size: 18px;
-    border: 2px solid #ccc;
-    background-color: #999999;
-    cursor: pointer;
-  }
-
-  .card:disabled {
-    cursor: default;
-  }
 </style>

@@ -1,15 +1,15 @@
 <script lang="ts">
-  import GenderRevealCard from './lib/GenderRevealCard.svelte'; 
+  import GenderRevealCard from "./lib/GenderRevealCard.svelte";
 </script>
 
 <main>
-  <div>
-  <h1>Jon & Rae's Baby Gender Reveal!</h1>
+  <div class="flex flex-col items-center justify-center min-h-screen">
+    <h1>Jon & Rae's Baby Gender Reveal!</h1>
 
-  <div class="card">
-    <GenderRevealCard />
+    <div>
+      <GenderRevealCard />
+    </div>
   </div>
-
 </main>
 
 <style>
