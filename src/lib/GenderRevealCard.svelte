@@ -8,9 +8,9 @@
   const ACTUAL_GENDER: Gender = "Boy";
   const OTHER_GENDER: Gender = ACTUAL_GENDER === "Boy" ? "Girl" : "Boy";
 
-  let cards: Content[] = $state(Array(GRID_SIZE).fill(null));
+  let genderGuesses: Content[] = $state(Array(GRID_SIZE).fill(null));
   let revealedCount: number = $derived(
-    cards.filter((card) => card !== null).length
+    genderGuesses.filter((card) => card !== null).length
   );
   let allRevealed: boolean = $derived(revealedCount === GRID_SIZE);
 
@@ -27,13 +27,13 @@
   }
 
   function revealCard(index: number): void {
-    if (!cards[index]) {
+    if (!genderGuesses[index]) {
       if (revealedCount === GRID_SIZE - 1) {
-        cards[index] = ACTUAL_GENDER;
+        genderGuesses[index] = ACTUAL_GENDER;
       } else {
-        cards[index] = getNextGuess();
+        genderGuesses[index] = getNextGuess();
       }
-      cards = [...cards];
+      genderGuesses = [...genderGuesses];
     }
   }
 </script>
@@ -43,15 +43,15 @@
     Gender Reveal Scratch Card
   </h2>
   <div class="grid grid-cols-3 gap-4 mt-5">
-    {#each cards as card, index}
+    {#each genderGuesses as genderGuess, index}
       <button
         class="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 lg:w-48 lg:h-60 cursor-pointer disabled:cursor-default bg-white shadow-lg rounded-lg flex items-center justify-center text-xl font-semibold text-gray-700"
         onclick={() => revealCard(index)}
-        disabled={!!card}
+        disabled={!!genderGuess}
       >
-        {#if !!card}
+        {#if !!genderGuess}
           <span transition:fade>
-            {card}
+            {genderGuess}
           </span>
         {:else}
           Click to reveal
