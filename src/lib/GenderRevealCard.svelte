@@ -46,7 +46,7 @@
 
 <div class="flex flex-col items-center justify-center p-5">
   {#if !allRevealed}
-    <h2 class="text-xl md:text-2xl lg:text-4xl font-bold text-white mb-5">
+    <h2 class="text-xl md:text-2xl lg:text-4xl font-bold text-white mb-5 text-center">
       Gender Reveal Scratch Card
     </h2>
   {/if}

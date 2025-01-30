@@ -59,7 +59,7 @@
     class={`flex flex-col items-center justify-center min-h-screen ${displayOptions.backgroundColor}`}
   >
     <h1
-      class={`text-2xl md:text-4xl lg:text-6xl font-extrabold text-transparent bg-clip-text ${displayOptions.titleColour}`}
+      class={`text-2xl sm:text-xl md:text-4xl lg:text-6xl font-extrabold text-transparent bg-clip-text text-center ${displayOptions.titleColour}`}
     >
       {displayOptions.title}
     </h1>
