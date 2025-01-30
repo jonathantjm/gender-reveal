@@ -4,7 +4,7 @@
   type Content = Gender | null;
 
   const GRID_SIZE = 9;
-  const ACTUAL_GENDER: Gender = "Boy";
+  const ACTUAL_GENDER: Gender = "Girl" as Gender;
   const OTHER_GENDER: Gender = ACTUAL_GENDER === "Boy" ? "Girl" : "Boy";
 
   let genderGuesses: Content[] = $state(Array(GRID_SIZE).fill(null));
