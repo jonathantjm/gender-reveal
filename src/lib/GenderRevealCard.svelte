@@ -46,6 +46,9 @@
     {#each genderGuesses as genderGuess, index}
       <button
         class="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 lg:w-48 lg:h-60 cursor-pointer disabled:cursor-default bg-white shadow-lg rounded-lg flex items-center justify-center text-xl font-semibold text-gray-700"
+        class:bg-white={genderGuess === null}
+        class:bg-blue-300={genderGuess === 'Boy'}
+        class:bg-pink-300={genderGuess === 'Girl'}
         onclick={() => revealCard(index)}
         disabled={!!genderGuess}
       >
